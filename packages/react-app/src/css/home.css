@@ -1,0 +1,26 @@
+.container {
+    display: grid;
+    grid-template-columns: auto auto;
+    height: 100%;
+    width: 100%;
+    
+}
+
+.container a {
+    padding: 17rem 10rem;
+    font-size: 3rem;
+    font-weight: 700;
+    border: 3px rgba(0, 0, 0, 50%);
+    align-items: center;
+
+}
+
+.Home_Link,
+.Home_Link:hover, 
+.Home_Link:visited {
+    border: none;
+    outline: none;
+    text-decoration: none;
+    -webkit-tap-highlight-color: white;
+  }
+
