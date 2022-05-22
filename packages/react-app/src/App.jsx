@@ -290,6 +290,9 @@ function App(props) {
         <Menu.Item key="/">
           <Link to="/">App</Link>
         </Menu.Item>
+        <Menu.Item key="/Debug">
+          <Link to="/Debug">Debug</Link>
+        </Menu.Item>
         <Menu.Item key="/hints">
           <Link to="/hints">Hints</Link>
         </Menu.Item>
@@ -361,10 +364,19 @@ function App(props) {
             mainnetProvider={mainnetProvider}
           />
         </Route>
+        <Route path="/Debug">
+          <Contract
+            name="System"
+            price={price}
+            signer={userSigner}
+            provider={localProvider}
+            blockExplorer={blockExplorer}
+            contractConfig={contractConfig}
+          />
+        </Route>
         <Route path="/teacher">
           <Contract
-            name="Teacher"
-            account={0x23ab3aaa7ebb95c70079aad320b25a5506b2657f}
+            name="TeacherPortal"
             price={price}
             signer={userSigner}
             provider={localProvider}
@@ -374,7 +386,7 @@ function App(props) {
         </Route>
         <Route path="/student">
           <Contract
-            name="Student"
+            name="StudentPortal"
             price={price}
             signer={userSigner}
             provider={localProvider}

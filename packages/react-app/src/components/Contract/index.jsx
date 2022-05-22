@@ -64,9 +64,8 @@ export default function Contract({
   } else {
     contract = customContract;
   }
-
+  console.log(contract);
   const address = contract ? contract.address : "";
-  // address = address == account ? address : account;
   const contractIsDeployed = useContractExistsAtAddress(provider, address);
 
   const displayedContractFunctions = useMemo(() => {
