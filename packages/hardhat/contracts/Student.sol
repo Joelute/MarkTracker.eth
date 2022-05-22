@@ -7,9 +7,9 @@ import "hardhat/console.sol";
 
 contract Student {
 
-  uint public averageMark = 95;
-  address public teacher = 0x23Ab3aaA7EbB95C70079aaD320b25a5506b2657f;
+  address public Teacher = 0x23Ab3aaA7EbB95C70079aaD320b25a5506b2657f;
 
+  uint public averageMark = 95;
   mapping(address => uint[8]) marks; 
 
 
