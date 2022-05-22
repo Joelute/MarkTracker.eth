@@ -27,14 +27,14 @@ contract System {
     student = _student;
   }
 
-  uint public English = 0;
+  uint public English = 100;
   uint public Math = 100;
-  uint public ComputerScience = 0;
-  uint public Chemistry = 0;
-  uint public Physics = 0;
-  uint public Music = 0;
-  uint public Art = 0;
-  uint public Gym = 0;
+  uint public ComputerScience = 99;
+  uint public Chemistry = 74;
+  uint public Physics = 56;
+  uint public Music = 23;
+  uint public Art = 85;
+  uint public Gym = 84;
 
   function _toLower(string memory str) internal pure returns (string memory) {
     bytes memory bStr = bytes(str);
@@ -69,7 +69,6 @@ contract System {
 
 contract TeacherPortal is System {
 
-  // Change subject to a string
   address Teacher = 0x23Ab3aaA7EbB95C70079aaD320b25a5506b2657f;
   address public Student;
 
@@ -78,13 +77,11 @@ contract TeacherPortal is System {
   }
 
   function edit_mark(uint mark, string memory subject) public {
-    Math = mark;
     require (mark >= 0 && mark <= 100, "Invalid mark"); 
     
     for (uint i = 0; i <subjects.length; i++) {
       if (keccak256(abi.encodePacked(_toLower(subjects[i]))) == keccak256(abi.encodePacked(_toLower(subject)))) {
         Marks[Student][subjects[i]] = mark;
-        Math = mark;
         return;
       }
     }
@@ -109,7 +106,7 @@ contract StudentPortal is System {
       if (keccak256(abi.encodePacked(_toLower(subjects[i]))) == keccak256(abi.encodePacked(_toLower(subject)))) {
         return Marks[Student][subjects[i]];
       }
-    }return 1000;
+    }return 0;
   }
 
   function updateAverageMark() public {
@@ -119,5 +116,4 @@ contract StudentPortal is System {
     }   
     averageMark = (sum/8);
   }
-
 }
