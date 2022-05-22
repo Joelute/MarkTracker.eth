@@ -7,15 +7,20 @@ import "hardhat/console.sol";
 
 contract Teacher {
 
-  uint public averageMark = 95;
-  address public teacher = 0x23Ab3aaA7EbB95C70079aaD320b25a5506b2657f;
+  // Change subject to a string
+  address teacher = 0x23Ab3aaA7EbB95C70079aaD320b25a5506b2657f;
+  address public Student;
 
   mapping(address => uint[8]) marks; 
 
-  function editMark(uint mark, uint subject) public {
-    require (mark >= 0 && mark <= 100, "Invalid mark");
-    require (msg.sender == teacher, "Not a teacher");
+  function select_student(address _student) public {
+    Student = _student;
+  }
 
-    marks[address(this)][subject] = mark; 
+  function edit_mark(uint mark, uint subject) public {
+    require (mark >= 0 && mark <= 100, "Invalid mark");
+    require (subject >=0 && subject <=7, "Invalid subject"); 
+
+    marks[Student][subject] = mark; 
   }
 }
