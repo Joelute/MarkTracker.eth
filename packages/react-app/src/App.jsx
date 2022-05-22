@@ -248,7 +248,6 @@ function App(props) {
     <div className="App">
       {/* ✏️ Edit the header and change the title to your project name */}
       <Header>
-        
         {/* 👨‍💼 Your account is in the top right with a wallet at connect options */}
         <div style={{ position: "relative", display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", flex: 1 }}>
@@ -289,10 +288,7 @@ function App(props) {
       />
       <Menu style={{ textAlign: "center", marginTop: 20 }} selectedKeys={[location.pathname]} mode="horizontal">
         <Menu.Item key="/">
-          <Link to="/">App Home</Link>
-        </Menu.Item>
-        <Menu.Item key="/debug">
-          <Link to="/debug">Debug Contracts</Link>
+          <Link to="/">App</Link>
         </Menu.Item>
         <Menu.Item key="/hints">
           <Link to="/hints">Hints</Link>
@@ -312,23 +308,6 @@ function App(props) {
         <Route exact path="/">
           {/* pass in any web3 props to this Home component. For example, yourLocalBalance */}
           <Home yourLocalBalance={yourLocalBalance} readContracts={readContracts} />
-        </Route>
-        <Route exact path="/debug">
-          {/*
-                🎛 this scaffolding is full of commonly used components
-                this <Contract/> component will automatically parse your ABI
-                and give you a form to interact with it locally
-            */}
-
-          <Contract
-            name="YourContract"
-            price={price}
-            signer={userSigner}
-            provider={localProvider}
-            address={address}
-            blockExplorer={blockExplorer}
-            contractConfig={contractConfig}
-          />
         </Route>
         <Route path="/hints">
           <Hints
@@ -382,29 +361,28 @@ function App(props) {
             mainnetProvider={mainnetProvider}
           />
         </Route>
-        <Route path='/teacher'>
+        <Route path="/teacher">
           <Contract
-              name="YourContract"
-              price={price}
-              signer={userSigner}
-              provider={localProvider}
-              address={address}
-              blockExplorer={blockExplorer}
-              contractConfig={contractConfig}
-            />
+            name="Teacher"
+            account={0x23ab3aaa7ebb95c70079aad320b25a5506b2657f}
+            price={price}
+            signer={userSigner}
+            provider={localProvider}
+            blockExplorer={blockExplorer}
+            contractConfig={contractConfig}
+          />
         </Route>
-        <Route path='/student'>
+        <Route path="/student">
           <Contract
-              name="YourContract"
-              price={price}
-              signer={userSigner}
-              provider={localProvider}
-              address={address}
-              blockExplorer={blockExplorer}
-              contractConfig={contractConfig}
-              />
+            name="Student"
+            price={price}
+            signer={userSigner}
+            provider={localProvider}
+            address={address}
+            blockExplorer={blockExplorer}
+            contractConfig={contractConfig}
+          />
         </Route>
-
       </Switch>
 
       <ThemeSwitch />
